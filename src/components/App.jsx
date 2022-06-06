@@ -19,7 +19,6 @@ function App(props) {
   return (
     <>
       <Header handleQueryChange={handleQueryChange} handleSubmit={handleSubmit}/>
-      <MapAPI />
       <Location query={query}/>
     </>
   );
