@@ -11,10 +11,12 @@ function MapAPI(props) {
 };
 
 function Map(props) {
-	console.log(props)
+	console.log(props.data)
+	let lat = props.data.stats.latitude
+	let lng = props.data.stats.longitude
 	return(
-		<GoogleMap zoom={10} center={{lat: 40, lng: -80}} mapContainerClassName="map-container">
-			<Marker position={{lat: 40, lng: -80}} />
+		<GoogleMap zoom={3} center={{lat: lat, lng: lng}} mapContainerClassName="map-container">
+			<Marker position={{lat: lat, lng: lng}} />
 		</GoogleMap>
 	)
 }
