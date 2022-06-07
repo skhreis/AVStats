@@ -12,14 +12,18 @@ function MapAPI(props) {
 
 
 function Map(props) {
-	const [lat, setLat] = useState(1)
-	const [lng, setLng] = useState(1)
+	const [fllat, setFlLat] = useState(1)
+	const [fllng, setFlLng] = useState(1)
+
+	const [deplat, setDeplat] = useState(1)
+	const [deplng, setDeplng] = useState(1)
+	
+	const [arrlat, setArrat] = useState(1)
+	const [arrlng, setArrng] = useState(1)
 	useEffect(() => {
 	setLat(props.data.stats.latitude)
 	setLng(props.data.stats.longitude)
-	console.log(props)
-	console.log(lat)
-	console.log(lng)
+
 	}, [props])
 
 	return(
