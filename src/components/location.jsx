@@ -42,7 +42,7 @@ function Location(props) {
 		load();
 	}, [search])
 	
-	return (info ? <MapAPI  data={info} /> : <div>Loading...</div>)
+	return (info ? <MapAPI  data={info} /> : null)
 }
 
 export default Location;

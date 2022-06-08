@@ -8,16 +8,6 @@ import {r1, r2, r3, r4, r5, r6, r7} from './Regex';
 
 
 function App(props) {
-  // const date = new Date()
-  // const offset = date.getTimezoneOffset()
-  // console.log(date)
-  // console.log(offset)
-
-  // let time = (Date.parse('2022-06-07T06:22:00.000') - 3600000)
-  // console.log(`UNIX String: ${time}`)
-  // time = new Date(time).toISOString()
-  // console.log(`new ISO String: ${time}`)
-  
   const [search, setSearch] = useState()
   const [flnum, setFlnum] = useState()
   const [airport, setAirport] = useState()
