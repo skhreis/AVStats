@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
-import {r7, r8, r9} from './Regex'
 import Schedule from './Schedule'
+
 function Deparr(props) {
 	const [departures, setDepartures] = useState()
 	const [arrivals, setArrivals] = useState()
@@ -9,7 +9,6 @@ function Deparr(props) {
 	const apiKey= process.env.REACT_APP_API_KEY_LONGLAT
 	const load = (async () => {
 		if(search){
-			if(r7.test(search)){
 				setArrivals(null)
 				const response = await fetch(`https://aviation-edge.com/v2/public/airportDatabase?key=${apiKey}&codeIataAirport=${search}`)
 				const data = await response.json()
@@ -19,38 +18,39 @@ function Deparr(props) {
 					const data1 = await response1.json()
 					const data2 = await response2.json()
 					setAirport(data)
-					timeFixDep(data1)
+					filterDep(data1)
 					timeFixArr(data2)
-					if(!data1.error | !data2.error){
-					console.log('success')
-					}
 				} else alert('There was no record found of the queried airport.')
 			}
-		}
 	})
+
+	function filterDep(deps){
+		let arr = deps.filter(dep => dep.flight.iataNumber && dep.status !== 'active' && dep.status !== 'unknown');
+		for(let i = 0; i+1 < arr.length; i++){
+			if(arr[i].departure.scheduledTime === arr[i+1].departure.scheduledTime &&
+			   arr[i].departure.gate === arr[i+1].departure.gate){
+					arr.splice(i, 1);
+					i=-1
+			}
+		}
+		timeFixDep(arr)
+}
+
+
+
 	function timeFixDep(dep) {
 		for(let i = 0; i < dep.length; i++){
 			let depTime = dep[i].departure.scheduledTime
-			let date = depTime.slice(0, 10)
-			let year = date.slice(0,4)
-			let month = date.slice(5,7)
-			let day = date.slice(8,10)
 			let time = depTime.slice(11,16)
-			dep[i].departure.scheduledTime = `${day}/${month}/${year} ${time}`
-			dep[i].departure.scheduledTime = `${day}/${month}/${year} ${time}`
+			dep[i].departure.scheduledTime = `${time}`
 		}
 		setDepartures(dep)
 	}
 	function timeFixArr(arr){
 		for(let i = 0; i < arr.length; i++){
 			let depTime = arr[i].arrival.scheduledTime
-			let date = depTime.slice(0, 10)
-			let year = date.slice(0,4)
-			let month = date.slice(5,7)
-			let day = date.slice(8,10)
 			let time = depTime.slice(11,16)
-			arr[i].arrival.scheduledTime = `${day}/${month}/${year} ${time}`
-			arr[i].arrival.scheduledTime = `${day}/${month}/${year} ${time}`
+			arr[i].arrival.scheduledTime = `${time}`
 		}
 		setArrivals(arr)
 	}

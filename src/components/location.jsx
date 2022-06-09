@@ -8,7 +8,7 @@ function Location(props) {
 	const load = (async () => {
 		if(search){
 			setInfo(null)
-			const response = await fetch(`http://aviation-edge.com/v2/public/flights?key=${apiKey}&flightIcao=${search}`)
+			const response = await fetch(`http://aviation-edge.com/v2/public/flights?key=${apiKey}&flightIata=${search}`)
 			const data = await response.json()
 			console.log(data)
 			if(!data.error){
