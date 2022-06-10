@@ -1,5 +1,4 @@
 import '../styles/Header.css';
-import {useState} from 'react';
 
 
 function Header(props) {
@@ -16,8 +15,6 @@ function Header(props) {
 					</form>
 				</div>
 				<div className= 'right'>
-					<button className= "tracker">Tracker</button>
-					<button className= "dep-arr">Dep/Arr</button>
 					<button className= "login">Login</button>
 				</div>
 			</nav>

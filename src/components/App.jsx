@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Header from './Header';
 import Location from './location';
 import Deparr from './Deparr';
+import Register from './Register';
 import {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11} from './Regex';
 
 
@@ -29,6 +30,7 @@ function App() {
       <Header className='xd' handleQueryChange={handleQueryChange} handleSubmit={handleSubmit}/>
       <Location query={flnum}/>
       <Deparr query={airport}/>
+      <Register />
     </>
   );
 }
