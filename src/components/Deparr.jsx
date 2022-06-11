@@ -17,6 +17,7 @@ function Deparr(props) {
 					const response2 = await fetch(`http://aviation-edge.com/v2/public/timetable?key=${apiKey}&iataCode=${search}&type=arrival`)
 					const data1 = await response1.json()
 					const data2 = await response2.json()
+					console.log(data1)
 					setAirport(data)
 					filterDep(data1)
 					timeFixArr(data2)
@@ -28,7 +29,7 @@ function Deparr(props) {
 		let arr = deps.filter(dep => dep.flight.iataNumber && dep.status !== 'active' && dep.status !== 'unknown');
 		for(let i = 0; i+1 < arr.length; i++){
 			if(arr[i].departure.scheduledTime === arr[i+1].departure.scheduledTime &&
-			   arr[i].departure.gate === arr[i+1].departure.gate){
+			   arr[i].departure.gate === arr[i+1].departure.gate){			
 					arr.splice(i, 1);
 					i=-1
 			}

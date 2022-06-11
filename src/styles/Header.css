@@ -1,13 +1,4 @@
 
-button{
-	background-color: #202124;
-	color: #bdc1c6;
-}
-
-button:hover{
-	text-decoration: underline;
-}
-
 .nav-bar{
 	display: flex;
 	justify-content: space-between;
@@ -18,8 +9,10 @@ button:hover{
 }
 
 .left{
+	display: flex;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: space-between;
+	width: 125px;
 }
 
 .center{
@@ -27,9 +20,7 @@ button:hover{
 }
 
 .right{
-	display: flex;
-	justify-content: space-between;
-	width: 250px;
+	padding-right: 10px;
 }
 
 .search-query{

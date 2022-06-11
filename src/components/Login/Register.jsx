@@ -1,11 +1,11 @@
 import {useState} from 'react'
-
+import { useNavigate } from "react-router-dom";
 
 function Register() {
 	const [name, setName] = useState()
 	const [email, setEmail] = useState()
 	const [password, setPassword] = useState()
-	
+	let navigate = useNavigate()
 	const registerUser = (async (e) => {
 		e.preventDefault()
 		const response = await fetch('http://localhost:5000/register', {
@@ -20,7 +20,8 @@ function Register() {
 			})
 		})
 		const data = await response.json()
-		console.log(data)
+		alert('Account creation successful!')
+		navigate('/')
 	})
 
 	function nameHandleChange(e) {
@@ -58,7 +59,7 @@ function Register() {
 								className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
 							</input>
 							<div className="flex items-baseline justify-between">
-								<button type='submit' value='register' 
+								<button type='submit' value='register'
 								className="px-5 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-600">Create Account</button>
 							</div>
 						</div>

@@ -1,5 +1,5 @@
-import {useState, useEffect, useMemo} from 'react';
-import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api'
+import {useState, useEffect} from 'react';
+import { GoogleMap, useLoadScript, Marker} from '@react-google-maps/api'
 import '../styles/Map.css'
 
 function MapAPI(props) {

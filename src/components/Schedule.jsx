@@ -2,7 +2,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 function Schedule(props) {
-	let airport = props.airport
+	// let airport = props.airport
 	let departures = props.departures
 	let arrivals = props.arrivals
 	console.log(arrivals)
