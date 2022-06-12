@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App';
-import Register from './components/Login/Register';
-import Login from './components/Login/Login';
-import Logout from './components/Login/Logout';
+import Register from './components/User/Register';
+import Login from './components/User/Login';
+import Logout from './components/User/Logout';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

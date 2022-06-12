@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import Schedule from './Schedule'
 
 function Deparr(props) {
@@ -57,8 +57,9 @@ function Deparr(props) {
 	}
 	useEffect(() => {
 		load();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [search])
-	return (arrivals ? <Schedule arrivals={arrivals} departures={departures} airport={airport} /> : <div>Not found.</div>)
+	return (arrivals ? <Schedule arrivals={arrivals} departures={departures} airport={airport} /> : null)
 }
 
 export default Deparr;

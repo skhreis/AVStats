@@ -1,11 +1,38 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
+
 function Schedule(props) {
-	// let airport = props.airport
+	let airport = props.airport[0].codeIataAirport
 	let departures = props.departures
 	let arrivals = props.arrivals
-	console.log(arrivals)
+
+	async function addFavoriteAirport() {
+		const response = await fetch('http://localhost:8000/favorites/airport', {
+			method: 'PUT',
+			headers: {
+				'x-access-token': localStorage.getItem('token'),
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({airport})
+	})
+		const data = await response.json()
+		console.log(data)
+	}
+	
+	async function delFavoriteAirport() {
+		const response = await fetch('http://localhost:8000/favorites/airport/delete', {
+			method: 'DELETE',
+			headers: {
+				'x-access-token': localStorage.getItem('token'),
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({airport})
+		})
+		const data = response.json()
+		console.log(data)
+	}
+	
 	const depTable = departures.map((dep, i) => {
 		return (
 			<>
@@ -42,6 +69,10 @@ function Schedule(props) {
 					<Tab>Arrivals</Tab>
 				</TabList>
 				<TabPanel>
+					<div>
+						<p>Airport: {airport}</p>
+						{/* <button onClick={addFavoriteAirport}>Star</button>  */}
+					</div>
 					<p>Times are in origin local</p>
 					<table className="table-auto">
 						<thead>
@@ -79,23 +110,3 @@ function Schedule(props) {
 }
 
 export default Schedule;
-
-
-<table className="table-auto">
-	<thead>
-		<th>Time</th>
-		<th>Flight Number</th>
-		<th>Airline</th>
-		<th>Destination</th>
-		<th>Gate</th>
-		<th>Status</th>
-	</thead>
-	<tbody>
-		<tr>1</tr>
-		<tr>2</tr>
-		<tr>3</tr>
-		<tr>4</tr>
-		<tr>5</tr>
-		<tr>6</tr>
-	</tbody>
-</table>

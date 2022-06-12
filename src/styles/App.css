@@ -1,3 +1,161 @@
-.xd{
-	background-color: aqua;
+body{
+	background-color: #383434;
+	color: white;
+	overflow: hidden;
 }
+
+
+.banner-container{
+	position: relative;
+	display: block;
+	align-items: center;
+	height: 750px;
+	width: 100vw;
+	padding-top: 20px;
+	padding-left: 6.33%;
+	z-index: 1;
+}
+
+.banner{
+	height: 750px;
+	width: 100vw;
+}
+
+.banner-pic{
+	position: relative;
+	background: url('./254381.jpg') no-repeat center;
+	height: 750px;
+	width: 1691px;
+	box-shadow: 10px solid black;
+}
+
+.banner-effect{
+	background-color: rgba(0,0,0,0.2);
+	height:750px;
+	box-shadow: 10px solid black;
+}
+
+.banner-header{
+	display: flex;
+	justify-content: center;
+	padding-top: 250px;
+	z-index: 0;
+	font-weight: bold;
+	font-size: 40px;
+}
+
+.banner-description{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	overflow-wrap: break-word;
+	width: 1200px;
+	padding-left: 475px;
+	padding-top: 20px;
+}
+
+.banner-buttons{
+	display: flex;
+	justify-content: center;
+	padding-top: 40px;
+}
+
+.flights-button{
+	margin-right: 250px;
+	height: 30px;
+	width: 150px;
+	box-shadow: 5px solid white;
+	border: 1px;
+	background-color: #996515;
+}
+
+
+.flights-button {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #0c0c3c;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin-right: 180px;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.flights-button:hover,
+.flights-button:focus {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.flights-button:hover {
+  transform: translateY(-1px);
+}
+
+.flights-button:active {
+  background-color: #8c3c37;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+
+.deparr-button {
+	align-items: center;
+	background-clip: padding-box;
+	background-color: #0c0c3c;
+	border: 1px solid transparent;
+	border-radius: .25rem;
+	box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	display: inline-flex;
+	font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 16px;
+	font-weight: 600;
+	justify-content: center;
+	line-height: 1.25;
+	min-height: 3rem;
+	padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+	position: relative;
+	text-decoration: none;
+	transition: all 250ms;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	vertical-align: baseline;
+	width: auto;
+  }
+  
+  .deparr-button:hover,
+  .deparr-button:focus {
+	background-color: #c85000;
+	box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  }
+  
+  .deparr-button:hover {
+	transform: translateY(-1px);
+  }
+  
+  .deparr-button:active {
+	background-color: #8c3c37;
+	box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+	transform: translateY(0);
+  }

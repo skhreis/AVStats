@@ -2,33 +2,32 @@ import '../styles/App.css'
 import '../styles/Map.css'
 import { useState } from 'react'
 import Header from './Header';
-import Location from './location';
-import Deparr from './Deparr';
+import Location from './Map/location';
+import Deparr from './Schedule/Deparr';
 import { r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11 } from './Regex';
 
 
 function App(props) {
-  const [search, setSearch] = useState()
-  const [flnum, setFlnum] = useState()
-  const [airport, setAirport] = useState()
-  const handleQueryChange = (e) => {
-    e.preventDefault()
-    setSearch(e.target.value)
-  }
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (r1.test(search) | r2.test(search) | r3.test(search) | r4.test(search) | r5.test(search) | r6.test(search) | r7.test(search) |
-      r8.test(search) | r9.test(search) | r10.test(search)) {
-      setFlnum(search)
-    } else if (r11.test(search)) {
-      setAirport(search)
-    } else alert(`${search} is not a valid search. Use a Flight Number, or Airport Abbreviation.`)
-  }
+  const [mapsModal, setMapsModal] = useState(false)
+  const [deparrModal, setDeparrModal] = useState(false)
+
   return (
     <>
-      <Header className='xd' handleQueryChange={handleQueryChange} handleSubmit={handleSubmit} />
-      <Location query={flnum} />
-      <Deparr query={airport} />
+      <Header />
+      <div className='banner-container'>
+        <div className='banner-pic'>
+          <div className='banner-effect'>
+              <h1 className='banner-header'>AVStats Flight Tracking System</h1>
+              <div className='banner-description'>AVStats can track an active flight to it's very location and also checking future departures and upcoming arrivals. Press one of the buttons below to test it out. Be sure to have your flight number ready or airport abbreviation code. For a list of airports, click here for list of airport and their abbreviation.</div>
+              <div className='banner-buttons'>
+              <button onClick={() => {setMapsModal(true)}} className='flights-button'>Active Flights</button>
+              <button onClick={() => {setDeparrModal(true)}} className='deparr-button'>Departures/Arrivals</button>
+              </div>
+          </div>
+        </div>
+      </div>
+      {mapsModal && <Location modal={setMapsModal} />}
+      {deparrModal && <Deparr modal={setDeparrModal} />}
     </>
   );
 }

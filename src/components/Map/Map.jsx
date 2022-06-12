@@ -1,6 +1,6 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { GoogleMap, useLoadScript, Marker} from '@react-google-maps/api'
-import '../styles/Map.css'
+import '../../styles/Map.css'
 
 function MapAPI(props) {
 	const apiKey = process.env.REACT_APP_API_KEY_MAP
