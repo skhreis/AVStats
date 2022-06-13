@@ -46,7 +46,6 @@ function Location(props) {
 	function searchHandleChange(e) {
 		e.preventDefault()
 		setSearch(e.target.value)
-		console.log(search)
 	}
 	useEffect(() => {
 		load();
@@ -71,7 +70,17 @@ function Location(props) {
 				</div>
 				<div className='right'>
 					<div className='maps-info-container'>
-						{info ? <div className='maps-info'>Put your info here </div> : <div>Waiting for data to load...</div>}
+						{info ? <div className='maps-info'>
+							<ul className='info-list'>
+								<li className='info-header'>Flight Stats</li>
+								<li classname='info-stat'>➣ Flight Number: {info.stats.id}</li><br />
+								<li classname='info-stat'>➣ Flight Altitude: {info.stats.altitude}</li><br />
+								<li classname='info-stat'>➣ Flight Latitude: {info.stats.latitude}</li><br />
+								<li classname='info-stat'>➣ Flight Longitude: {info.stats.longitude}</li><br />
+								<li classname='info-stat'>➣ Departure Airport: {info.departureAirport}</li><br />
+								<li classname='info-stat'>➣ Arrival Airport: {info.arrivalAirport}</li><br />
+							</ul>
+						</div> : <div>Waiting for data to load...</div>}
 					</div>
 				</div>
 			</div>

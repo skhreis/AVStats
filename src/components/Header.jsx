@@ -36,7 +36,6 @@ function Header(props) {
 			} else return
 		}
 	})
-	console.log(favorites)
 	useEffect(() => {
 		faves();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -56,12 +55,12 @@ function Header(props) {
 	return (
 		<>
 			<nav onLoad={getName} className="nav-bar">
-			<ul>
-				<li>AVStats</li>
-				<li>Favorites</li>
-				<li onClick={airports}>Airports</li>
-				{ name ? <li onClick={logout}>Logout</li> : <li onClick={login}>Login</li> }
-				{ name ? <li><span>Welcome, {name}</span></li> : null}
+			<ul className='header-list'>
+				<li className='header-card'>AVStats</li>
+				<li className='header-card'>Favorites</li>
+				<li className='header-card' onClick={airports}>Airports</li>
+				{ name ? <li className='header-card' onClick={logout}>Logout</li> : <li className='header-card' onClick={login}>Login</li> }
+				{ name ? <li className='header-card'><span>Welcome, {name}</span></li> : null}
 			</ul>
 			</nav>
 

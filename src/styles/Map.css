@@ -1,4 +1,5 @@
-.map-container{
+.map-container {
+	border-radius: 2%;
 	width: 700px;
 	height: 700px;
 }

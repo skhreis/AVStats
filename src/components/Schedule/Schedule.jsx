@@ -1,5 +1,6 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import './styles/Schedule.css'
 
 
 function Schedule(props) {
@@ -14,12 +15,14 @@ function Schedule(props) {
 				'x-access-token': localStorage.getItem('token'),
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({airport})
-	})
+			body: JSON.stringify({ airport })
+		})
 		const data = await response.json()
-		console.log(data)
+		if(data){
+			alert(`Added ${airport} to favorites.`)
+		} else alert('You must be logged in to add to favorites.')
 	}
-	
+
 	async function delFavoriteAirport() {
 		const response = await fetch('http://localhost:8000/favorites/airport/delete', {
 			method: 'DELETE',
@@ -27,15 +30,18 @@ function Schedule(props) {
 				'x-access-token': localStorage.getItem('token'),
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({airport})
+			body: JSON.stringify({ airport })
 		})
 		const data = response.json()
-		console.log(data)
+		if(data){
+			alert(`Deleted ${airport} from favorites.`)
+		} else alert("You either aren't logged in or it doesn't exist in your favorites.")
 	}
-	
+
 	const depTable = departures.map((dep, i) => {
 		return (
 			<>
+
 				<tr key={i}>
 					<td>{dep.departure.scheduledTime}</td>
 					<td>{dep.flight.iataNumber}</td>
@@ -70,39 +76,51 @@ function Schedule(props) {
 				</TabList>
 				<TabPanel>
 					<div>
-						<p>Airport: {airport}</p>
-						{/* <button onClick={addFavoriteAirport}>Star</button>  */}
+						<p>Airport: {airport}
+						<button className="favorites" onClick={addFavoriteAirport}>Add to Favorites</button>
+						<button className="favorites" onClick={delFavoriteAirport}>Delete from Favorites</button>
+						</p>
 					</div>
 					<p>Times are in origin local</p>
-					<table className="table-auto">
-						<thead>
-							<th>Time</th>
-							<th>Flight Number</th>
-							<th>Airline</th>
-							<th>Destination</th>
-							<th>Gate</th>
-							<th>Status</th>
-						</thead>
-						<tbody>
-							{depTable}
-						</tbody>
-					</table>
+					<div className='table-container'>
+						<table className="fl-table">
+							<thead>
+								<th>Time</th>
+								<th>Flight Number</th>
+								<th>Airline</th>
+								<th>Destination</th>
+								<th>Gate</th>
+								<th>Status</th>
+							</thead>
+							<tbody>
+								{depTable}
+							</tbody>
+						</table>
+					</div>
 				</TabPanel>
 				<TabPanel>
+					<div classNAme='favorite-airport'>
+						<p>Airport: {airport}
+						<button className="favorites" onClick={addFavoriteAirport}>Add to Favorites</button>
+						<button className="favorites" onClick={delFavoriteAirport}>Delete from Favorites</button>
+						</p>
+					</div>
 					<p>Times are in destination local</p>
-					<table className="table-auto">
-						<thead>
-							<th>Time</th>
-							<th>Flight Number</th>
-							<th>Airline</th>
-							<th>Origin</th>
-							<th>Gate</th>
-							<th>Status</th>
-						</thead>
-						<tbody>
-							{arrTable}
-						</tbody>
-					</table>
+					<div className='table-container'>
+						<table className="fl-table">
+							<thead>
+								<th>Time</th>
+								<th>Flight Number</th>
+								<th>Airline</th>
+								<th>Origin</th>
+								<th>Gate</th>
+								<th>Status</th>
+							</thead>
+							<tbody>
+								{arrTable}
+							</tbody>
+						</table>
+					</div>
 				</TabPanel>
 			</Tabs>
 		</>

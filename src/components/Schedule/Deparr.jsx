@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
 import Schedule from './Schedule'
+import './styles/Schedule.css'
 
 function Deparr(props) {
 	const [departures, setDepartures] = useState()
 	const [arrivals, setArrivals] = useState()
 	const [airport, setAirport] = useState()
-	const search = props.query
+	const [search, setSearch] = useState()
 	const apiKey= process.env.REACT_APP_API_KEY_LONGLAT
-	const load = (async () => {
+	const load = (async (e) => {
+		e.preventDefault()
 		if(search){
 				setArrivals(null)
 				const response = await fetch(`https://aviation-edge.com/v2/public/airportDatabase?key=${apiKey}&codeIataAirport=${search}`)
@@ -59,7 +61,33 @@ function Deparr(props) {
 		load();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [search])
-	return (arrivals ? <Schedule arrivals={arrivals} departures={departures} airport={airport} /> : null)
+
+	function searchHandleChange(e) {
+		e.preventDefault()
+		setSearch(e.target.value)
+	}
+
+	return (
+		<>
+			<div className='deparr-background'></div>
+			<div className='deparr-container'>
+				<button onClick={() => { props.modal(false) }} className='close-deparr'>X</button>
+				<div className='top'>
+					<form className='search' onSubmit={load}>
+						<input onSubmit={load} onChange={searchHandleChange} className='flights-input' placeholder='Enter Airport Iata Code..'></input>
+						<button onClick={load} className='search-button'>Search</button>
+					</form>
+				</div>
+				<div className='table'>
+					<div className='deparr'>
+						{arrivals ? <Schedule arrivals={arrivals} departures={departures} airport={airport} /> : null}
+					</div>
+				</div>
+			</div>
+		</>
+	)
 }
 
 export default Deparr;
+
+// arrivals ? <Schedule arrivals={arrivals} departures={departures} airport={airport} /> : null
