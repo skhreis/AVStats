@@ -40,8 +40,6 @@ function Schedule(props) {
 
 	const depTable = departures.map((dep, i) => {
 		return (
-			<>
-
 				<tr key={i}>
 					<td>{dep.departure.scheduledTime}</td>
 					<td>{dep.flight.iataNumber}</td>
@@ -50,12 +48,10 @@ function Schedule(props) {
 					<td>{dep.departure.gate}</td>
 					<td>{dep.status}</td>
 				</tr>
-			</>
 		)
 	})
 	const arrTable = arrivals.map((arr, i) => {
 		return (
-			<>
 				<tr key={i}>
 					<td>{arr.arrival.scheduledTime}</td>
 					<td>{arr.flight.iataNumber}</td>
@@ -64,7 +60,6 @@ function Schedule(props) {
 					<td>{arr.arrival.gate}</td>
 					<td>{arr.status}</td>
 				</tr>
-			</>
 		)
 	})
 	return (
@@ -85,12 +80,14 @@ function Schedule(props) {
 					<div className='table-container'>
 						<table className="fl-table">
 							<thead>
+								<tr>
 								<th>Time</th>
 								<th>Flight Number</th>
 								<th>Airline</th>
 								<th>Destination</th>
 								<th>Gate</th>
 								<th>Status</th>
+								</tr>
 							</thead>
 							<tbody>
 								{depTable}
@@ -99,7 +96,7 @@ function Schedule(props) {
 					</div>
 				</TabPanel>
 				<TabPanel>
-					<div classNAme='favorite-airport'>
+					<div className='favorite-airport'>
 						<p>Airport: {airport}
 						<button className="favorites" onClick={addFavoriteAirport}>Add to Favorites</button>
 						<button className="favorites" onClick={delFavoriteAirport}>Delete from Favorites</button>
@@ -109,12 +106,14 @@ function Schedule(props) {
 					<div className='table-container'>
 						<table className="fl-table">
 							<thead>
+								<tr>
 								<th>Time</th>
 								<th>Flight Number</th>
 								<th>Airline</th>
 								<th>Origin</th>
 								<th>Gate</th>
 								<th>Status</th>
+								</tr>
 							</thead>
 							<tbody>
 								{arrTable}

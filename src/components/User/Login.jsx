@@ -27,10 +27,8 @@ function Login() {
 			navigate('/')
 
 		} else {
-			console.log(data.error)
 			alert('Invalid email or password.')
 		}
-		console.log(data)
 	})
 
 	function emailHandleChange(e) {

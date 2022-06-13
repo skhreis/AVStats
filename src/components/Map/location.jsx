@@ -12,7 +12,6 @@ function Location(props) {
 			setInfo(null)
 			const response = await fetch(`http://aviation-edge.com/v2/public/flights?key=${apiKey}&flightIata=${search}`)
 			const data = await response.json()
-			console.log(data)
 			if (!data.error) {
 				mapLocation(data)
 			} else alert('There was no record found of the queried flight.')
@@ -21,8 +20,6 @@ function Location(props) {
 				const arrResponse = await fetch(`https://aviation-edge.com/v2/public/airportDatabase?key=${apiKey}&codeIataAirport=${data[0].arrival.iataCode}`)
 				const depData = await depResponse.json()
 				const arrData = await arrResponse.json()
-				console.log(depData)
-				console.log(arrData)
 				const flightStats = {
 					stats: {
 						id: data[0].flight.iataNumber, altitude: data[0].geography.altitude, latitude: data[0].geography.latitude,
@@ -38,7 +35,6 @@ function Location(props) {
 					status: data[0].status,
 				}
 				setInfo(flightStats)
-				console.log(info)
 			}
 		}
 	})

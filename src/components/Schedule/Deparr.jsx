@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Schedule from './Schedule'
 import './styles/Schedule.css'
 
@@ -19,7 +19,6 @@ function Deparr(props) {
 					const response2 = await fetch(`http://aviation-edge.com/v2/public/timetable?key=${apiKey}&iataCode=${search}&type=arrival`)
 					const data1 = await response1.json()
 					const data2 = await response2.json()
-					console.log(data1)
 					setAirport(data)
 					filterDep(data1)
 					timeFixArr(data2)
@@ -57,10 +56,6 @@ function Deparr(props) {
 		}
 		setArrivals(arr)
 	}
-	useEffect(() => {
-		load();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [search])
 
 	function searchHandleChange(e) {
 		e.preventDefault()
@@ -89,5 +84,3 @@ function Deparr(props) {
 }
 
 export default Deparr;
-
-// arrivals ? <Schedule arrivals={arrivals} departures={departures} airport={airport} /> : null
