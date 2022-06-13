@@ -59,7 +59,7 @@ function Register() {
 								<input onChange={emailHandleChange} type="email" placeholder="Email" autocomplete="nope" />
 							</div>
 							<div className="input-field">
-								<input onChange={passwordHandleChange} type="password" placeholder="Password" autocomplete="new-password" />
+								<input onChange={passwordHandleChange} type="password" placeholder="Password" autocomplete="nope" />
 							</div>
 						</form>
 						<div className="action">

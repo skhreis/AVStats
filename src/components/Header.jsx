@@ -15,11 +15,8 @@ function Header(props) {
 		const data = await response.json()
 		if (data.status === 'ok') {
 			setName(data.name)
-		} else {
-			setName(null)
 		}
 	})
-
 	useEffect(() => {
 		getName();
 	}, [])
@@ -58,7 +55,7 @@ function Header(props) {
 
 	return (
 		<>
-			<nav className="nav-bar">
+			<nav onLoad={getName} className="nav-bar">
 			<ul>
 				<li>AVStats</li>
 				<li>Favorites</li>

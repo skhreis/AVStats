@@ -20,7 +20,7 @@ function Map(props) {
 
 	function loading() {
 		return(
-			<GoogleMap zoom={2} center={{lat: 40.866667, lng: 34.566667}} mapContainerClassName="map-container">
+			<GoogleMap zoom={2} center={{lat: data.data.stats.latitude, lng: data.data.stats.longitude}} mapContainerClassName="map-container">
 				<Marker title='Airplane Position' label='F' position={{lat: data.data.stats.latitude, lng: data.data.stats.longitude}} />
 				<Marker title='Departure Airport' label='D' position={{lat: data.data.departureLat, lng: data.data.departureLng }} />
 				<Marker title='Arrival Airport' label='A' position={{lat: data.data.arrivalLat, lng: data.data.arrivalLng }} />

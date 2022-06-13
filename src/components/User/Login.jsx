@@ -51,10 +51,10 @@ function Login() {
 				<h1>AVStats Login</h1>
 				<form onSubmit={signIn} className="content">
 					<div className="input-field">
-						<input onChange={emailHandleChange} type="email" placeholder="Email" autocomplete="nope" />
+						<input onChange={emailHandleChange} type="email" placeholder="Email" autoComplete="nope" />
 					</div>
 					<div className="input-field">
-						<input onChange={passwordHandleChange} type="password" placeholder="Password" autocomplete="new-password" />
+						<input onChange={passwordHandleChange} type="password" placeholder="Password" autoComplete="nope" />
 					</div>
 				</form>
 				<div className="action">

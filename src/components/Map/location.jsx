@@ -6,7 +6,8 @@ function Location(props) {
 	const [info, setInfo] = useState(null)
 	const [search, setSearch] = useState(null)
 	const apiKey = process.env.REACT_APP_API_KEY_LONGLAT
-	const load = (async () => {
+	const load = (async (e) => {
+		e.preventDefault()
 		if (search) {
 			setInfo(null)
 			const response = await fetch(`http://aviation-edge.com/v2/public/flights?key=${apiKey}&flightIata=${search}`)
@@ -45,20 +46,22 @@ function Location(props) {
 	function searchHandleChange(e) {
 		e.preventDefault()
 		setSearch(e.target.value)
+		console.log(search)
 	}
 	useEffect(() => {
 		load();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [search])
+	}, [])
 
 	return (
 		<>
 			<div className='maps-background'></div>
 			<div className='maps-container'>
 				<button onClick={() => { props.modal(false) }} className='close-maps'>X</button>
-				<div classname='top'>
-					<form onSubmit={searchHandleChange}>
-						<input className='flights-input'></input>
+				<div className='top'>
+					<form className='search' onSubmit={load}>
+						<input onSubmit={load} onChange={searchHandleChange} className='flights-input' placeholder='Enter Flight Number...'></input>
+						<button onClick={load} className='search-button'>Search</button>
 					</form>
 				</div>
 				<div className='left'>
@@ -76,7 +79,4 @@ function Location(props) {
 	)
 }
 
-
-
-//info ? <MapAPI  data={info} /> : null
 export default Location;
